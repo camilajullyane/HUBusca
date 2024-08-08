@@ -1,37 +1,53 @@
-import { createContext, ReactNode, useState } from "react";
+import { ChangeEvent, createContext, ReactNode, useState } from "react";
 import { UserServices } from "../services/users";
+import { User } from "../models/userModel";
+// import { apiResponseData } from "../models/apiResponseModel";
 
 type SendValue = {
-    name: any;
-    userData: any;
-    getUserData: () => void;
-    updateName: (event: any) => void;
-
-    
-}
+  name: string;
+  userData: User | undefined;
+  getUserData: () => void;
+  updateName: (event: ChangeEvent<HTMLInputElement>) => void;
+};
 
 export const UserContext = createContext({} as SendValue);
 
 type Props = {
-    children: ReactNode;
-}
+  children: ReactNode;
+};
 
-export const UserProvider = ({children} : Props) => {
-    const [name, setName] = useState("");
-    const [userData, setUserData] = useState({});
+export const UserProvider = ({ children }: Props) => {
+  const [name, setName] = useState("");
+  const [userData, setUserData] = useState<User>();
 
-    const updateName = (event: any) => setName(event.target.value)
-    
-    const getUserData = async () => {
-        const {data} = await UserServices.getUserData(name);
-        console.log(data);
-        setUserData(data);
-    } 
+  const updateName = (event: ChangeEvent<HTMLInputElement>) =>
+    setName(event.target.value);
 
+  const getUserData = async () => {
+    try {
+      console.log("Name", name);
 
-    return (
-        <UserContext.Provider value={{userData, name, getUserData, updateName}}>
-            {children};
-        </UserContext.Provider>
-    )
-}
+      const {
+        data: { name: userName, avatar_url, login, location },
+      } = await UserServices.getUserData(name);
+
+      const data: User = {
+        name: userName,
+        avatar_url,
+        login,
+        location,
+      };
+
+      setUserData(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <UserContext.Provider value={{ userData, name, getUserData, updateName }}>
+      {children};
+    </UserContext.Provider>
+  );
+};

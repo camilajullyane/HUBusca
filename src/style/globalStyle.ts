@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-
 export const GlobalStyle = createGlobalStyle`
 
     *{ 
@@ -9,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border;
         margin: 0;
         padding: 0;
-        /* background-color: #fafbfc; */
+        
 }
 
     body {
@@ -17,7 +16,4 @@ export const GlobalStyle = createGlobalStyle`
         height: 100vh;
         overflow: hidden;
     }
-
-
-
-`
+`;

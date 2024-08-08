@@ -2,14 +2,13 @@ import { HeaderStyled, InputContainer } from "./styles";
 import SearchBar from "../SearchBar";
 
 function Header() {
-
-    return (
+  return (
     <HeaderStyled>
-        <InputContainer>
+      <InputContainer>
         <SearchBar />
-        </InputContainer>
+      </InputContainer>
     </HeaderStyled>
-    )
+  );
 }
 
 export default Header;

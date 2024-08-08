@@ -1,21 +1,28 @@
-import { useContext } from "react";
+import { FormEvent, useContext } from "react";
 import { Form, InputField, SearchButtonStyled } from "./styles";
 import { IoSearchOutline } from "react-icons/io5";
 import { UserContext } from "../../contexts/UserContext";
 
 function SearchBar() {
-  const {updateName, getUserData} = useContext(UserContext);
+  const { updateName, getUserData } = useContext(UserContext);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    await getUserData();
+  };
 
   return (
-
-    <Form>
-        <InputField type="text" placeholder="Buscar perfil" onChange={updateName} required/>
-        <SearchButtonStyled type="submit" >
-          <IoSearchOutline />
-        </SearchButtonStyled>
+    <Form onSubmit={handleSubmit}>
+      <InputField
+        type="text"
+        placeholder="Buscar perfil"
+        onChange={updateName}
+        required
+      />
+      <SearchButtonStyled type="submit">
+        <IoSearchOutline />
+      </SearchButtonStyled>
     </Form>
-        
-
   );
 }
 

@@ -1,28 +1,26 @@
-// import { apiResponseData } from "../../models/apiResponseModel";
-import { Container} from "./styles";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import { Container, Image, Text } from "./styles";
 
-// type Props = { userData: apiResponseData };
+// type UserCardProps = { userData: User};
 
-// function UserCard({userData}: Props) {
 function UserCard() {
-    return (
+  const { userData } = useContext(UserContext);
+
+  return (
     <Container>
-        {/* <Image src={userData.avatar_url} alt="Foto do perfil"/>
-
-        <h2>{userData.name}</h2>
-
-        <h3>{userData.login}</h3>
-
-        <h3>{userData.location}</h3> */}
-
-        {/* <Image src="https://s2-g1.glbimg.com/ueJtijDqD8gKKTVrHEEqQX_dNmY=/0x0:1024x683/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2024/E/e/YeJeDvSrCagfDDpKOOoA/taco-night.jpg" alt="Foto do perfil"/>
-        <h3>Nome: </h3>
-        <h3>Localização: </h3>
-        <h3>Nick: </h3> */}
-
+      {userData === undefined ? (
+        <p>Pesquise por um perfil</p>
+      ) : (
+        <>
+          <Image src={userData.avatar_url} alt="Foto do perfil" />
+          <Text>Nome: {userData.name}</Text>
+          <Text>Nickname: {userData.login}</Text>
+          <Text>Localização: {userData.location}</Text>
+        </>
+      )}
     </Container>
-    )
-
+  );
 }
 
 export default UserCard;

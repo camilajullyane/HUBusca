@@ -19,8 +19,8 @@ function UserCard() {
             src={userData.avatar_url}
             alt="Foto do perfil"
             onClick={() => {
-              changeModalVisibility(true);
               getUserRepositories(userData.name);
+              changeModalVisibility(true);
             }}
           />
           <TextContainer>

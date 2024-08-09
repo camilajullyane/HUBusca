@@ -8,14 +8,22 @@ import {
   UserInfoContainer,
   UserInfo,
 } from "./styles";
+// import UserModal from "../UserModal";
 
 function SearchedUsers() {
-  const { searchedUsersList, changeModalVisibility, setName } =
-    useContext(UserContext);
+  const {
+    searchedUsersList,
+    changeModalVisibility,
+    setName,
+    // getUserRepositories,
+  } = useContext(UserContext);
 
-  const handleClick = (name: string) => {
-    setName(name);
+  const handleClick = (userName: string) => {
+    console.log("userName:", userName);
+
+    setName(userName);
     changeModalVisibility(true);
+    // getUserRepositories(name);
   };
   return (
     <ul>
@@ -26,7 +34,9 @@ function SearchedUsers() {
             <Image
               src={user.avatar_url}
               alt="Foto do Usuário"
-              onClick={() => handleClick(user.name)}
+              onClick={() => {
+                handleClick(user.login);
+              }}
             />
             <UserInfoContainer>
               <UserInfo>Nome: {user.name}</UserInfo>

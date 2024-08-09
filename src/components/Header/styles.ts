@@ -10,7 +10,7 @@ export const InputContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 50%;
   padding: 20px;
   border-radius: 10px;
   background-color: #ddd;

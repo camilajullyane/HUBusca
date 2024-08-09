@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { Container, Image, Text } from "./styles";
-
-// type UserCardProps = { userData: User};
+import { TextContainer } from "../UserModal/styles";
 
 function UserCard() {
-  const { userData, changeModalVisibility, getUserRepositories, userRepoData } =
+  const { userData, changeModalVisibility, getUserRepositories } =
     useContext(UserContext);
-  console.log(userRepoData);
+
+  // console.log(userRepoData);
 
   return (
     <Container>
@@ -20,12 +20,14 @@ function UserCard() {
             alt="Foto do perfil"
             onClick={() => {
               changeModalVisibility(true);
-              getUserRepositories();
+              getUserRepositories(userData.name);
             }}
           />
-          <Text>Nome: {userData.name}</Text>
-          <Text>Login: {userData.login}</Text>
-          <Text>Localização: {userData.location}</Text>
+          <TextContainer>
+            <Text>Nome: {userData.name}</Text>
+            <Text>Login: {userData.login}</Text>
+            <Text>Localização: {userData.location}</Text>
+          </TextContainer>
         </>
       )}
     </Container>

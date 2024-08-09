@@ -1,21 +1,24 @@
 import UserCard from "./components/UserCard";
-// import SearchBar from "./components/SearchBar";
 import Header from "./components/Header";
 import { GlobalStyle } from "./style/globalStyle";
-import { Container } from "./App";
+import { Container, MainContent } from "./AppStyle";
 import { UserProvider } from "./contexts/UserContext";
 import UserModal from "./components/UserModal";
 import "rsuite/dist/rsuite.min.css";
+import SearchedUsers from "./components/SearchedUsers/indext";
 
 function App() {
   return (
     <>
       <UserProvider>
         <Container>
-          <Header />
-          <UserCard />
-          <UserModal />
+          <SearchedUsers />
+          <MainContent>
+            <Header />
+            <UserCard />
+          </MainContent>
         </Container>
+        <UserModal />
         <GlobalStyle />
       </UserProvider>
     </>

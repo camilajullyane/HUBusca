@@ -8,5 +8,5 @@ export type User = Pick<
 
 export type UserRepositories = Pick<
   apiResponseRepositories,
-  "name" | "language" | "created_at" | "pushed_at"
+  "name" | "language" | "created_at" | "pushed_at" | "html_url" | "description"
 >;

@@ -12,11 +12,11 @@ export const Container = styled.div`
   margin: 50px auto;
   border-radius: 10px;
 
-  /* @media (max-width: 300px) {
-        max-width: 100%;
-        height: auto;
-        margin: 20px auto;
-    } */
+  @media (max-width: 300px) {
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+  }
 `;
 
 export const Image = styled.img`
@@ -27,11 +27,11 @@ export const Image = styled.img`
   padding: 30px;
   cursor: pointer;
 
-  /* @media (max-width: 300px) {
-        width: 80%;
-        height: auto;
-        padding: 10px;
-    } */
+  @media (max-width: 300px) {
+    width: 80%;
+    height: auto;
+    padding: 10px;
+  }
 `;
 
 export const Text = styled.p`
@@ -40,5 +40,3 @@ export const Text = styled.p`
   padding-bottom: 5px;
   color: #2f2531;
 `;
-
-export const Link = styled.a``;

@@ -10,4 +10,8 @@ export const UserServices = {
   async getUsersRepositories(name: string) {
     return await api.get(`/users/${name}/repos`);
   },
+
+  async getUserRepositoriesLang(name: string, repoName: string) {
+    return await api.get(`/users/${name}/repos/${repoName}/languages`);
+  },
 };

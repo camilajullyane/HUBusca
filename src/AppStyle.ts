@@ -6,6 +6,11 @@ export const Container = styled.div`
 
   /* background-color: #1d1b1b; */
   display: grid;
-  grid-template-rows: 15% 1fr;
+  grid-template-columns: 15% 1fr;
   grid-gap: 2rem;
+`;
+
+export const MainContent = styled.div`
+  display: grid;
+  grid-template-rows: 15% 1fr;
 `;

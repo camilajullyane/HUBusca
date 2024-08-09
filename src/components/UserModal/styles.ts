@@ -34,12 +34,17 @@ export const Title = styled.p`
   font-size: 1.2rem;
   font-weight: 500;
   /* background-color: black; */
+  /* border-bottom: 2px solid black; */
+
   padding-bottom: 5px;
 `;
 
 export const StyledDiv = styled.div`
-  background-color: red;
+  border-bottom: 2px solid black;
+
   margin: 1rem 0;
   padding: 10px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 `;
+
+export const Link = styled.a``;

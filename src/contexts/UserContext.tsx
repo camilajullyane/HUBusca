@@ -1,7 +1,12 @@
-import { ChangeEvent, createContext, ReactNode, useState } from "react";
+import {
+  ChangeEvent,
+  createContext,
+  ReactNode,
+  useState,
+  useEffect,
+} from "react";
 import { UserServices } from "../services/users";
 import { User, UserRepositories } from "../models/userModel";
-// import { apiResponseData } from "../models/apiResponseModel";
 
 type SendValue = {
   name: string;
@@ -10,8 +15,10 @@ type SendValue = {
   updateName: (event: ChangeEvent<HTMLInputElement>) => void;
   modalVisibility: boolean;
   changeModalVisibility: (state: boolean) => void;
-  getUserRepositories: () => void;
+  getUserRepositories: (userName: string) => void;
   userRepoData: UserRepositories[] | undefined;
+  searchedUsersList: User[];
+  setName: (name: string) => void;
 };
 
 export const UserContext = createContext({} as SendValue);
@@ -22,6 +29,9 @@ type Props = {
 
 export const UserProvider = ({ children }: Props) => {
   const [name, setName] = useState("");
+  // const [repoName, setRepoName] = useState("");
+
+  const [searchedUsersList, setSearchedUsersList] = useState<User[]>([]);
   const [userData, setUserData] = useState<User>();
   const [modalVisibility, setModalVisibility] = useState(false);
   const [userRepoData, setUserRepoData] = useState<UserRepositories[]>();
@@ -31,6 +41,7 @@ export const UserProvider = ({ children }: Props) => {
 
   const getUserData = async () => {
     try {
+      const response = await UserServices.getUserData(name);
       const {
         data: {
           name: userName,
@@ -41,7 +52,7 @@ export const UserProvider = ({ children }: Props) => {
           followers,
           public_repos,
         },
-      } = await UserServices.getUserData(name);
+      } = response;
 
       const data: User = {
         name: userName,
@@ -53,16 +64,24 @@ export const UserProvider = ({ children }: Props) => {
         public_repos,
       };
 
+      const userExists = searchedUsersList.some((user) => user.id === data.id);
+
+      const newValue = userExists
+        ? searchedUsersList
+        : [...searchedUsersList, data];
+
       setUserData(data);
-      //   console.log(data);
+      setSearchedUsersList(newValue);
+      console.log(searchedUsersList);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getUserRepositories = async () => {
+  const getUserRepositories = async (userName: string) => {
     try {
-      const { data } = await UserServices.getUsersRepositories(name);
+      const { data } = await UserServices.getUsersRepositories(userName);
+      console.log("dentro da userrepo:", data, name);
 
       const repoData: UserRepositories[] = data.map(
         (repo: UserRepositories) => ({
@@ -70,19 +89,25 @@ export const UserProvider = ({ children }: Props) => {
           language: repo.language,
           created_at: repo.created_at,
           pushed_at: repo.pushed_at,
+          html_url: repo.html_url,
+          description: repo.description,
         })
       );
 
-      console.log(repoData);
+      // console.log(repoData);
       setUserRepoData(repoData);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const changeModalVisibility = (state: boolean) => {
-    setModalVisibility(state);
-  };
+  // const setUserCard = (user: User) => setUserData(user);
+
+  const changeModalVisibility = (state: boolean) => setModalVisibility(state);
+
+  useEffect(() => {
+    getUserRepositories(name);
+  }, [name]);
 
   return (
     <UserContext.Provider
@@ -95,6 +120,8 @@ export const UserProvider = ({ children }: Props) => {
         changeModalVisibility,
         getUserRepositories,
         userRepoData,
+        searchedUsersList,
+        setName,
       }}
     >
       {children};

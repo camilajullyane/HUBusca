@@ -25,6 +25,7 @@ export const Image = styled.img`
   margin: auto;
   display: block;
   padding: 30px;
+  cursor: pointer;
 
   /* @media (max-width: 300px) {
         width: 80%;
@@ -35,6 +36,7 @@ export const Image = styled.img`
 
 export const Text = styled.p`
   font-size: 1 rem;
+  font-weight: 500;
   padding-bottom: 5px;
   color: #2f2531;
 `;

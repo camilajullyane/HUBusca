@@ -8,6 +8,6 @@ export const UserServices = {
   },
 
   async getUsersRepositories(name: string) {
-    return api.get(`/users/${name}/repos`);
+    return await api.get(`/users/${name}/repos`);
   },
 };

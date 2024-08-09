@@ -1,27 +1,55 @@
 import { Modal } from "rsuite";
-import { Image, Text } from "../UserCard/styles";
+import { Text } from "../UserCard/styles";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import {
+  ProfileImage,
+  StyledDiv,
+  StyledSection,
+  TextContainer,
+  TextItem,
+  Title,
+} from "./styles";
 
 function UserModal() {
-  const { userData } = useContext(UserContext);
+  const { userData, modalVisibility, changeModalVisibility, userRepoData } =
+    useContext(UserContext);
 
   return (
-    <Modal>
+    <Modal
+      open={modalVisibility}
+      onClose={() => {
+        changeModalVisibility(false);
+      }}
+      keyboard
+      style={{ overflowY: "scroll" }}
+    >
       <Modal.Header>
-        <p>Perfil do usuário</p>
-        <Image src={userData?.avatar_url} alt="Foto do perfil"></Image>
-        <Text>Id: {}</Text>
-        <Text>Name: {userData?.name}</Text>
-        <Text>Login: {userData?.login}</Text>
-        <Text>Localização: {userData?.location}</Text>
-        <Text>Seguidores: {userData?.followers}</Text>
-        <Text>Repositórios públicos: {userData?.public_repos}</Text>
+        <Title style={{}}>Perfil do usuário</Title>
+        <StyledSection>
+          <ProfileImage src={userData?.avatar_url} alt="Foto do perfil" />
+          <TextContainer>
+            <TextItem>Id: {userData?.id}</TextItem>
+            <TextItem>Nome: {userData?.name}</TextItem>
+            <TextItem>Login: {userData?.login}</TextItem>
+            <TextItem>Localização: {userData?.location}</TextItem>
+            <TextItem>Seguidores: {userData?.followers}</TextItem>
+            <TextItem>Repositórios públicos: {userData?.public_repos}</TextItem>
+          </TextContainer>
+        </StyledSection>
       </Modal.Header>
       <Modal.Body>
-        <Modal.Title>
-          <Text>Repositórios</Text>
-        </Modal.Title>
+        <Title>Repositórios</Title>
+        {userRepoData?.map((repo) => {
+          return (
+            <StyledDiv key={repo.name}>
+              <Text>Nome: {repo.name}</Text>
+              <Text>Linguagem: {repo.language}</Text>
+              <Text>Data da criação: {repo.created_at}</Text>
+              <Text>Último push: {repo.pushed_at}</Text>
+            </StyledDiv>
+          );
+        })}
       </Modal.Body>
     </Modal>
   );

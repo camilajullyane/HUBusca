@@ -9,7 +9,7 @@ type FormState = {
 };
 
 function SearchBar() {
-  const { updateName, setName, getUserData } = useContext(UserContext);
+  const { setName } = useContext(UserContext);
 
   const [formData, setFormData] = useState<FormState>({
     name: "",
@@ -19,7 +19,6 @@ function SearchBar() {
     event.preventDefault();
     setName(formData.name);
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 

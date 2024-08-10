@@ -4,7 +4,7 @@ export const Form = styled.form`
   display: flex;
   /* background-color: yellow; */
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   justify-content: space-evenly;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.1);
   gap: 13px;

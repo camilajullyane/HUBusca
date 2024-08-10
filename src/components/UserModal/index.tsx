@@ -23,7 +23,6 @@ function UserModal() {
         changeModalVisibility(false);
       }}
       keyboard
-      style={{ overflowY: "scroll" }}
     >
       <Modal.Header>
         <Title style={{}}>Perfil do usuário</Title>

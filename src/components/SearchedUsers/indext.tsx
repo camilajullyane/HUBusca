@@ -7,16 +7,13 @@ import {
   Image,
   UserInfoContainer,
   UserInfo,
+  Name,
+  ParentContainer,
 } from "./styles";
-// import UserModal from "../UserModal";
 
 function SearchedUsers() {
-  const {
-    searchedUsersList,
-    changeModalVisibility,
-    setName,
-    // getUserRepositories,
-  } = useContext(UserContext);
+  const { searchedUsersList, changeModalVisibility, setName } =
+    useContext(UserContext);
 
   const handleClick = (userName: string) => {
     console.log("userName:", userName);
@@ -26,7 +23,7 @@ function SearchedUsers() {
     // getUserRepositories(name);
   };
   return (
-    <ul>
+    <ParentContainer>
       <Title>Vistos recentemente</Title>
       {searchedUsersList.map((user: User) => {
         return (
@@ -39,14 +36,14 @@ function SearchedUsers() {
               }}
             />
             <UserInfoContainer>
-              <UserInfo>Nome: {user.name}</UserInfo>
-              <UserInfo>Login: {user.login}</UserInfo>
-              <UserInfo>Localização: {user.location}</UserInfo>
+              <Name>{user.name}</Name>
+              <UserInfo>{user.login}</UserInfo>
+              <UserInfo>{user.location}</UserInfo>
             </UserInfoContainer>
           </StyledContainer>
         );
       })}
-    </ul>
+    </ParentContainer>
   );
 }
 

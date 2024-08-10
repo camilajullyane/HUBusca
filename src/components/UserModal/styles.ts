@@ -6,6 +6,8 @@ export const ProfileImage = styled.img`
   /* margin: auto; */
   display: block;
   padding: 20px;
+  border-radius: 50%;
+
   /* cursor: pointer; */
 `;
 

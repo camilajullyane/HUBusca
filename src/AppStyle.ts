@@ -6,7 +6,7 @@ export const Container = styled.div`
 
   /* background-color: #1d1b1b; */
   display: grid;
-  grid-template-columns: 15% 1fr;
+  grid-template-columns: 20% 1fr;
   grid-gap: 2rem;
 `;
 

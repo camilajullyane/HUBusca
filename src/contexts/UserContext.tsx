@@ -81,8 +81,8 @@ export const UserProvider = ({ children }: Props) => {
   const getUserRepositories = async (userName: string) => {
     try {
       const { data } = await UserServices.getUsersRepositories(userName);
-      console.log("dentro da userrepo:", data);
-      console.log("dentro da userrepo:", userName);
+      // console.log("dentro da userrepo:", data);
+      // console.log("dentro da userrepo:", userName);
 
       const repoData: UserRepositories[] = data.map(
         (repo: UserRepositories) => ({
@@ -109,8 +109,10 @@ export const UserProvider = ({ children }: Props) => {
   useEffect(() => {
     console.log("name 2:", name);
 
-    getUserRepositories(name);
-    getUserData(name);
+    if (name) {
+      getUserRepositories(name);
+      getUserData(name);
+    }
   }, [name]);
 
   return (

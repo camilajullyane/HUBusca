@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   width: 35%;
   /* max-width: 300px; */
-  height: 70%;
+  height: 45%;
   background-color: #ddd;
-  margin: 50px auto;
+  margin: 70px auto;
   border-radius: 10px;
 
   @media (max-width: 300px) {
@@ -20,11 +20,11 @@ export const Container = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 60%;
-  height: 60%;
+  width: 40%;
+  height: 50%;
   margin: auto;
   display: block;
-  padding: 30px;
+  padding: 10px;
   cursor: pointer;
   border-radius: 50%;
 
@@ -38,17 +38,17 @@ export const Image = styled.img`
 export const Text = styled.p`
   font-size: 1 rem;
   font-weight: 500;
-  padding-bottom: 5px;
+  /* padding-bottom: 3px; */
   color: #2f2531;
 
   @media (max-width: 768px) {
     font-size: 0.8rem;
-    padding-bottom: 4px;
+    padding-bottom: 2px;
   }
 
   @media (max-width: 480px) {
     font-size: 0.7rem;
-    padding-bottom: 3px;
+    padding-bottom: 1px;
   }
 
   @media (max-width: 300px) {

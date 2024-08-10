@@ -33,7 +33,7 @@ function SearchBar() {
       <InputField
         type="text"
         name="name"
-        placeholder="Buscar perfil"
+        placeholder="Ex: camilajullyane"
         onChange={handleChange}
         required
       />

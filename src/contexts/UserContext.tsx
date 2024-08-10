@@ -7,6 +7,7 @@ import {
 } from "react";
 import { UserServices } from "../services/users";
 import { User, UserRepositories } from "../models/userModel";
+import { format, parseISO } from "date-fns";
 
 type SendValue = {
   name: string;
@@ -88,8 +89,8 @@ export const UserProvider = ({ children }: Props) => {
         (repo: UserRepositories) => ({
           name: repo.name,
           language: repo.language,
-          created_at: repo.created_at,
-          pushed_at: repo.pushed_at,
+          created_at: format(parseISO(repo.created_at), "dd/MM/yy"),
+          pushed_at: format(parseISO(repo.pushed_at), "dd/MM/yy"),
           html_url: repo.html_url,
           description: repo.description,
         })

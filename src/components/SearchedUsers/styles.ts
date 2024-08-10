@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ParentContainer = styled.section`
-  background-color: black;
+  background-color: #333;
   display: flex;
   flex-direction: column;
   width: 22vw;
@@ -9,14 +9,14 @@ export const ParentContainer = styled.section`
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
-    display: none;
+    width: 12px;
   }
   -ms-overflow-style: none;
   scrollbar-width: none;
 `;
 
 export const StyledContainer = styled.div`
-  background-color: lightblue;
+  background-color: #ddd;
   width: 80%;
   height: 40%;
   padding: 10px;
@@ -26,7 +26,8 @@ export const StyledContainer = styled.div`
 `;
 
 export const Title = styled.h3`
-  font-size: 1rem;
+  font-size: 1.2rem;
+  padding: 15px;
   color: #ddd;
   margin: 0 auto;
 `;
@@ -58,7 +59,7 @@ export const Name = styled.p`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  font-size: 1.2rem;
+  font-size: 1rem;
   background-color: purple;
   color: white;
   border-radius: 3px;

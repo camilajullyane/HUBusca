@@ -4,11 +4,12 @@ export const Form = styled.form`
   display: flex;
   /* background-color: yellow; */
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
   justify-content: space-evenly;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.1);
   gap: 13px;
   padding-right: 13px;
+  /* margin-bottom: 20px; */
 `;
 
 export const InputField = styled.input`

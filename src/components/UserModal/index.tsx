@@ -9,7 +9,8 @@ import {
   StyledSection,
   TextContainer,
   TextItem,
-  Title,
+  ModalTitle,
+  RepoTitle,
 } from "./styles";
 
 function UserModal() {
@@ -23,9 +24,10 @@ function UserModal() {
         changeModalVisibility(false);
       }}
       keyboard
+      aria-describedby="user-repos-info"
     >
       <Modal.Header>
-        <Title style={{}}>Perfil do usuário</Title>
+        <ModalTitle style={{}}>Perfil do usuário</ModalTitle>
         <StyledSection>
           <ProfileImage src={userData?.avatar_url} alt="Foto do perfil" />
           <TextContainer>
@@ -39,14 +41,17 @@ function UserModal() {
         </StyledSection>
       </Modal.Header>
       <Modal.Body>
-        <Title>Repositórios</Title>
+        <RepoTitle>Repositórios</RepoTitle>
         {userRepoData?.map((repo) => {
           return (
             <StyledDiv key={repo.name}>
               <Link href={repo.html_url} target="_blank">
                 <Text>Nome: {repo.name}</Text>
               </Link>
-              <Text>Linguagem: {repo.language}</Text>
+              <Text>
+                Linguagem:{" "}
+                {repo.language === null ? "Não informado" : repo.language}
+              </Text>
               <Text>
                 Descrição:{" "}
                 {repo.description === null ? "Não informado" : repo.description}

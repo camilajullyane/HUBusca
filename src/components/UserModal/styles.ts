@@ -6,6 +6,10 @@ export const ProfileImage = styled.img`
   display: block;
   padding: 20px;
   border-radius: 50%;
+  @media screen and (max-width: 756px) {
+    width: 20%;
+    height: 20%;
+  }
 `;
 
 export const StyledSection = styled.section`
@@ -20,6 +24,10 @@ export const TextContainer = styled.div`
   justify-content: center;
   padding: 10px;
   width: 70%;
+
+  @media screen and (max-width: 756px) {
+    font-size: 0.6rem;
+  }
 `;
 
 export const TextItem = styled.p`
@@ -51,5 +59,3 @@ export const RepoTitle = styled.p`
 
   padding-bottom: 5px;
 `;
-
-export const Link = styled.a``;

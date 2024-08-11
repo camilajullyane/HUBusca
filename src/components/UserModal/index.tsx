@@ -3,7 +3,6 @@ import { Text } from "../UserCard/styles";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import {
-  Link,
   ProfileImage,
   StyledDiv,
   StyledSection,
@@ -45,9 +44,9 @@ function UserModal() {
         {userRepoData?.map((repo) => {
           return (
             <StyledDiv key={repo.name}>
-              <Link href={repo.html_url} target="_blank">
+              <a href={repo.html_url} target="_blank">
                 <Text>Nome: {repo.name}</Text>
-              </Link>
+              </a>
               <Text>
                 Linguagem:{" "}
                 {repo.language === null ? "Não informado" : repo.language}

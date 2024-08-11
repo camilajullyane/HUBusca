@@ -3,12 +3,9 @@ import styled from "styled-components";
 export const ProfileImage = styled.img`
   width: 30%;
   height: 30%;
-  /* margin: auto; */
   display: block;
   padding: 20px;
   border-radius: 50%;
-
-  /* cursor: pointer; */
 `;
 
 export const StyledSection = styled.section`
@@ -41,10 +38,8 @@ export const ModalTitle = styled.p`
 
 export const StyledDiv = styled.div`
   border-bottom: 2px solid black;
-
   margin: 1rem 0;
   padding: 10px;
-  /* border-radius: 10px; */
 `;
 
 export const RepoTitle = styled.p`
@@ -52,7 +47,6 @@ export const RepoTitle = styled.p`
   text-align: center;
   font-size: 1.2rem;
   font-weight: 500;
-  /* background-color: black; */
   border-bottom: 2px solid black;
 
   padding-bottom: 5px;

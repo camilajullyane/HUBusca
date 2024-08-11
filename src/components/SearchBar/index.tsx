@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { FormEvent, useContext, useState } from "react";
 import { Form, InputField, SearchButtonStyled } from "./styles";
-import { IoSearchOutline } from "react-icons/io5";
+import { IoSearch } from "react-icons/io5";
 import { UserContext } from "../../contexts/UserContext";
 
 type FormState = {
@@ -38,7 +38,7 @@ function SearchBar() {
         required
       />
       <SearchButtonStyled type="submit">
-        <IoSearchOutline />
+        <IoSearch />
       </SearchButtonStyled>
     </Form>
   );

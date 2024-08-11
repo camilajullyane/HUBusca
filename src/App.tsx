@@ -9,7 +9,8 @@ import SearchedUsers from "./components/SearchedUsers/indext";
 
 function App() {
   return (
-    <>
+    <div className="App">
+      <GlobalStyle />
       <UserProvider>
         <Container>
           <SearchedUsers />
@@ -19,9 +20,8 @@ function App() {
           </MainContent>
         </Container>
         <UserModal />
-        <GlobalStyle />
       </UserProvider>
-    </>
+    </div>
   );
 }
 

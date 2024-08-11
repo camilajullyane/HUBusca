@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 export const ParentContainer = styled.section`
-  background-color: #333;
+  background-color: #3f4448;
   display: flex;
   flex-direction: column;
-  width: 22vw;
-  height: 100vh;
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
@@ -13,6 +11,11 @@ export const ParentContainer = styled.section`
   }
   -ms-overflow-style: none;
   scrollbar-width: none;
+
+  @media screen and (max-width: 768px) {
+    order: 2;
+    width: 100%;
+  }
 `;
 
 export const StyledContainer = styled.div`
@@ -22,7 +25,10 @@ export const StyledContainer = styled.div`
   padding: 10px;
   margin: 5px auto;
   border-radius: 8px;
-  /* margin-bottom: 5px; */
+
+  @media screen and (max-width: 768px) {
+    width: 60%;
+  }
 `;
 
 export const Title = styled.h3`
@@ -40,6 +46,11 @@ export const Image = styled.img`
   padding: 10px;
   cursor: pointer;
   border-radius: 50%;
+
+  @media screen and (max-width: 768px) {
+    width: 30%;
+    height: 40%;
+  }
 `;
 
 export const UserInfoContainer = styled.div`
@@ -52,6 +63,11 @@ export const UserInfo = styled.p`
   margin: 5px 20px;
   font-size: 1rem;
   font-weight: 600;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.6rem;
+    margin: 5px 20px;
+  }
 `;
 
 export const Name = styled.p`
@@ -60,8 +76,13 @@ export const Name = styled.p`
   align-items: center;
   margin: 0 auto;
   font-size: 1rem;
-  background-color: purple;
+  background-color: #223240;
   color: white;
   border-radius: 3px;
   display: flex;
+
+  @media screen and (max-width: 768px) {
+    width: 70%;
+    text-align: center;
+  }
 `;

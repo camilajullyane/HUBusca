@@ -5,23 +5,36 @@ export const HeaderStyled = styled.header`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 export const InputContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 38%;
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   background-color: #ddd;
+
+  @media screen and (max-width: 768px) {
+    width: 50%;
+  }
 `;
 
 export const MainTitle = styled.p`
-  color: purple;
+  color: #ddd;
   font-size: 2.5rem;
   font-weight: 600;
-  margin-top: 50px;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  margin: 30px 20px;
   letter-spacing: 1.5px;
+
+  @media screen and (max-width: 768px) {
+    margin: 0;
+    font-size: 0.75rem;
+    display: none;
+  }
 `;

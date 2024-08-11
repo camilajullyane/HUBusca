@@ -30,9 +30,9 @@ type Props = {
 
 export const UserProvider = ({ children }: Props) => {
   const [name, setName] = useState("");
-  // const [repoName, setRepoName] = useState("");
-
-  const [searchedUsersList, setSearchedUsersList] = useState<User[]>([]);
+  const [searchedUsersList, setSearchedUsersList] = useState<User[]>(
+    JSON.parse(localStorage.getItem("usersList") as string) || []
+  );
   const [userData, setUserData] = useState<User>();
   const [modalVisibility, setModalVisibility] = useState(false);
   const [userRepoData, setUserRepoData] = useState<UserRepositories[]>();
@@ -73,7 +73,7 @@ export const UserProvider = ({ children }: Props) => {
 
       setUserData(data);
       setSearchedUsersList(newValue);
-      // console.log(searchedUsersList);
+      localStorage.setItem("usersList", JSON.stringify(newValue));
     } catch (error) {
       console.log(error);
     }
@@ -82,8 +82,6 @@ export const UserProvider = ({ children }: Props) => {
   const getUserRepositories = async (userName: string) => {
     try {
       const { data } = await UserServices.getUsersRepositories(userName);
-      // console.log("dentro da userrepo:", data);
-      // console.log("dentro da userrepo:", userName);
 
       const repoData: UserRepositories[] = data.map(
         (repo: UserRepositories) => ({
@@ -96,20 +94,15 @@ export const UserProvider = ({ children }: Props) => {
         })
       );
 
-      // console.log(repoData);
       setUserRepoData(repoData);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // const setUserCard = (user: User) => setUserData(user);
-
   const changeModalVisibility = (state: boolean) => setModalVisibility(state);
 
   useEffect(() => {
-    console.log("name 2:", name);
-
     if (name) {
       getUserRepositories(name);
       getUserData(name);
@@ -131,7 +124,7 @@ export const UserProvider = ({ children }: Props) => {
         setName,
       }}
     >
-      {children};
+      {children}
     </UserContext.Provider>
   );
 };

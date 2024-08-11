@@ -16,11 +16,8 @@ function SearchedUsers() {
     useContext(UserContext);
 
   const handleClick = (userName: string) => {
-    console.log("userName:", userName);
-
     setName(userName);
     changeModalVisibility(true);
-    // getUserRepositories(name);
   };
   return (
     <ParentContainer>
